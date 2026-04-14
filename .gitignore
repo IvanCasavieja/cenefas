@@ -1,0 +1,5 @@
+node_modules/
+storage/jobs/
+npm-debug.log*
+examples/output-demo.pptx
+examples/http-output-demo.pptx

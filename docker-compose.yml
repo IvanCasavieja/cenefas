@@ -1,0 +1,7 @@
+services:
+  cenefas-web:
+    build: .
+    container_name: cenefas-web
+    restart: unless-stopped
+    ports:
+      - "80:3000"

@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log*
+storage/jobs
+.git
+.gitignore
+examples/output-demo.pptx
+examples/http-output-demo.pptx
+

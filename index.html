@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Cenefas PPTX</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div class="hero__eyebrow">Plantillas PowerPoint + datos tabulares</div>
+        <h1>Subi el template, subi los datos y la app te devuelve el PPTX listo</h1>
+        <p>
+          Carga un template <code>.pptx</code> con placeholders como <code>{{COD}}</code> y un archivo
+          <code>.xlsx</code> o <code>.csv</code>. La app analiza coincidencias, genera el PowerPoint final
+          y dispara la descarga automaticamente.
+        </p>
+      </section>
+
+      <section class="panel">
+        <form id="analyze-form" class="upload-form" novalidate>
+          <label class="field">
+            <span class="field__label">Template base</span>
+            <input id="template-input" type="file" name="template" accept=".pptx" required />
+            <small>Se trabaja directo sobre el PPTX, sin convertirlo a imagen ni a PDF.</small>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Archivo de datos</span>
+            <input id="data-input" type="file" name="data" accept=".xlsx,.csv" required />
+            <small>La primera fila se usa como encabezados para buscar placeholders equivalentes.</small>
+          </label>
+
+          <div class="actions">
+            <button id="process-button" type="submit">Procesar y descargar</button>
+            <button id="download-button" type="button" class="button-secondary" disabled>
+              Descargar nuevamente
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div id="status" class="status">
+          Subi ambos archivos y usa el boton principal. La app analiza, genera y descarga el archivo final
+          sin que tengas que hacer pasos manuales intermedios.
+        </div>
+      </section>
+
+      <section id="summary" class="summary hidden">
+        <div class="summary-grid">
+          <article class="card">
+            <h2>Resumen</h2>
+            <dl class="facts">
+              <div>
+                <dt>Template</dt>
+                <dd id="template-name">-</dd>
+              </div>
+              <div>
+                <dt>Datos</dt>
+                <dd id="data-name">-</dd>
+              </div>
+              <div>
+                <dt>Registros</dt>
+                <dd id="record-count">0</dd>
+              </div>
+              <div>
+                <dt>Slides en el PPTX</dt>
+                <dd id="slide-count">0</dd>
+              </div>
+            </dl>
+            <p id="generation-mode" class="generation-mode"></p>
+          </article>
+
+          <article class="card">
+            <h2>Columnas detectadas</h2>
+            <div id="columns-list" class="tag-list"></div>
+          </article>
+
+          <article class="card">
+            <h2>Placeholders detectados</h2>
+            <div id="placeholders-list" class="tag-list"></div>
+          </article>
+
+          <article class="card">
+            <h2>Coincidencias</h2>
+            <ul id="matched-list" class="list"></ul>
+          </article>
+
+          <article class="card">
+            <h2>Faltantes</h2>
+            <ul id="missing-list" class="list"></ul>
+          </article>
+
+          <article class="card">
+            <h2>Columnas sin uso</h2>
+            <ul id="unused-list" class="list"></ul>
+          </article>
+        </div>
+
+        <article class="card card--wide">
+          <h2>Slides template detectadas</h2>
+          <ul id="slides-list" class="list"></ul>
+        </article>
+
+        <article class="card card--wide">
+          <h2>Advertencias</h2>
+          <ul id="warnings-list" class="list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
